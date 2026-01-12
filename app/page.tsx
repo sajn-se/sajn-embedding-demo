@@ -321,15 +321,24 @@ function DemoContent() {
                 <h2 className="text-sm font-medium text-zinc-900">
                   Preview
                 </h2>
-                <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
-                  <Dialog.Trigger asChild>
-                    <button
-                      disabled={!canPreview}
-                      className="rounded-md bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      Open in Dialog
-                    </button>
-                  </Dialog.Trigger>
+                <div className="flex gap-2">
+                  <a
+                    href={canPreview ? `/embed?documentId=${encodeURIComponent(documentId)}&token=${encodeURIComponent(token)}&mode=${mode}&language=${language}${host ? `&host=${encodeURIComponent(host)}` : ""}&scrollIndicator=${showScrollIndicator}&allowRejection=${allowDocumentRejection}${background ? `&bg=${encodeURIComponent(background)}` : ""}${primary ? `&primary=${encodeURIComponent(primary)}` : ""}${foreground ? `&fg=${encodeURIComponent(foreground)}` : ""}${mutedForeground ? `&muted=${encodeURIComponent(mutedForeground)}` : ""}` : "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`rounded-md bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 ${!canPreview ? "pointer-events-none opacity-50" : ""}`}
+                  >
+                    Open Fullscreen
+                  </a>
+                  <Dialog.Root open={dialogOpen} onOpenChange={setDialogOpen}>
+                    <Dialog.Trigger asChild>
+                      <button
+                        disabled={!canPreview}
+                        className="rounded-md bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        Open in Dialog
+                      </button>
+                    </Dialog.Trigger>
                   <Dialog.Portal>
                     <Dialog.Overlay className="fixed inset-0 bg-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
                     <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-lg border border-zinc-200 bg-white p-0 shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
@@ -359,6 +368,7 @@ function DemoContent() {
                     </Dialog.Content>
                   </Dialog.Portal>
                 </Dialog.Root>
+                </div>
               </div>
               <div className="h-[500px] p-4">
                 <div className="h-full w-full">{renderEmbed()}</div>
