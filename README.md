@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# @sajn/embed-react Demo
+
+A demo page for the [@sajn/embed-react](https://www.npmjs.com/package/@sajn/embed-react) package, showcasing how to embed sajn document signing and viewing components in your React application.
+
+## About sajn
+
+[sajn](https://sajn.se) is a document signing platform. This demo showcases the React embedding components that allow you to integrate sajn's signing and viewing experience directly into your application.
+
+## Documentation
+
+For full documentation on the embedding components, visit: [docs.sajn.se/guides/embedding-react](https://docs.sajn.se/guides/embedding-react)
+
+## Features
+
+- Toggle between `EmbedSignDocument` and `EmbedViewDocument` components
+- Configure all available props (language, host, scroll indicator, document rejection)
+- Theme customization via CSS variables
+- Preview in inline panel or dialog modal
+- Event log showing callback events
+- All settings persisted in URL for easy sharing
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) to see the demo.
 
-## Learn More
+## URL Parameters
 
-To learn more about Next.js, take a look at the following resources:
+All configuration is stored in the URL, making it easy to share specific configurations:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Parameter | Description |
+|-----------|-------------|
+| `documentId` | Document identifier |
+| `token` | Signer authentication token |
+| `mode` | `sign` or `view` |
+| `language` | `sv`, `en`, `no`, `da`, `fi`, `de`, `is`, `es`, `fr`, `it` |
+| `host` | Custom API host (optional) |
+| `scrollIndicator` | Show scroll hint (`true`/`false`) |
+| `allowRejection` | Enable document rejection (`true`/`false`) |
+| `bg` | Background color |
+| `primary` | Primary color |
+| `fg` | Foreground color |
+| `muted` | Muted foreground color |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
