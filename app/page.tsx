@@ -93,6 +93,7 @@ function DemoContent() {
       return (
         <EmbedSignDocument
           {...embedProps}
+          className="h-full w-full"
           allowDocumentRejection={allowDocumentRejection}
           onSignerCompleted={(data) => addLog("onSignerCompleted", data)}
           onSignerRejected={(data) => addLog("onSignerRejected", data)}
@@ -100,7 +101,7 @@ function DemoContent() {
       );
     }
 
-    return <EmbedViewDocument {...embedProps} />;
+    return <EmbedViewDocument {...embedProps} className="h-full w-full" />;
   };
 
   return (
@@ -348,12 +349,16 @@ function DemoContent() {
                           </button>
                         </Dialog.Close>
                       </div>
-                      <div className="h-[500px] p-4">{renderEmbed()}</div>
+                      <div className="h-[500px] p-4">
+                        <div className="h-full w-full">{renderEmbed()}</div>
+                      </div>
                     </Dialog.Content>
                   </Dialog.Portal>
                 </Dialog.Root>
               </div>
-              <div className="h-[500px] p-4">{renderEmbed()}</div>
+              <div className="h-[500px] p-4">
+                <div className="h-full w-full">{renderEmbed()}</div>
+              </div>
             </section>
 
             {/* Event Log */}
