@@ -66,6 +66,9 @@ function DemoContent() {
 
   const canPreview = documentId.trim() && token.trim();
 
+  // Key to force re-render when settings change
+  const embedKey = `${documentId}-${token}-${mode}-${language}-${host}-${showScrollIndicator}-${allowDocumentRejection}-${background}-${primary}-${foreground}-${mutedForeground}`;
+
   // Shared embed props
   const embedProps = {
     documentId,
@@ -92,6 +95,7 @@ function DemoContent() {
     if (mode === "sign") {
       return (
         <EmbedSignDocument
+          key={embedKey}
           {...embedProps}
           className="h-full w-full"
           allowDocumentRejection={allowDocumentRejection}
@@ -101,7 +105,7 @@ function DemoContent() {
       );
     }
 
-    return <EmbedViewDocument {...embedProps} className="h-full w-full" />;
+    return <EmbedViewDocument key={embedKey} {...embedProps} className="h-full w-full" />;
   };
 
   return (
